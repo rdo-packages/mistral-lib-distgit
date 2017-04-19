@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa98f980_aa4f6e91",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-04-19T16:14:16Z",
+      "side": 1,
+      "message": "babel is required as buildrequires because of doc building, not for unit tests, so it should not be as Requires for -tests subpackage.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 37
+      },
+      "revId": "d6b19be357e5c39ae20cf4ec43d80bfab616c863",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa98f980_ea49768c",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-04-19T16:14:16Z",
+      "side": 1,
+      "message": "duplicate. In fact as oslo-serialization is dependency for pyhon2-mistral-lib which is a dependency for -tests, you can remove python-oslo-serialization and python-pbr as Requires for -tests subpackage.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "d6b19be357e5c39ae20cf4ec43d80bfab616c863",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa98f980_0a5eba45",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-04-19T16:14:16Z",
+      "side": 1,
+      "message": "Same comments for python2-mistral-lib-tests apply for python3-mistral-lib-tests.",
+      "revId": "d6b19be357e5c39ae20cf4ec43d80bfab616c863",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
