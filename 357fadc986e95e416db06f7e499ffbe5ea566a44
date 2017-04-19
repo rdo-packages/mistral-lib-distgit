@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa98f980_0addda70",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-04-19T07:25:46Z",
+      "side": 1,
+      "message": "s/master/%{upstream_version}",
+      "range": {
+        "startLine": 20,
+        "startChar": 64,
+        "endLine": 20,
+        "endChar": 70
+      },
+      "revId": "357fadc986e95e416db06f7e499ffbe5ea566a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa98f980_4ae7e240",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-04-19T07:25:46Z",
+      "side": 1,
+      "message": "As per this https://github.com/openstack/mistral-lib/blob/master/requirements.txt#L5 Requires are python-pbr, python-babel and python-oslo-serialization. There is no python-oslo-config as a requires.",
+      "revId": "357fadc986e95e416db06f7e499ffbe5ea566a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa98f980_6ae4a63b",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-04-19T07:25:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "357fadc986e95e416db06f7e499ffbe5ea566a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa98f980_2ada9e78",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-04-19T07:25:46Z",
+      "side": 1,
+      "message": "rm -rf {test-,}requirements.txt",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 23
+      },
+      "revId": "357fadc986e95e416db06f7e499ffbe5ea566a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa98f980_8ad0ea54",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-04-19T07:25:46Z",
+      "side": 1,
+      "message": "It is not needed as License file will directly come from python2-%{library} package because it is the requires of the -tests subpackage.",
+      "revId": "357fadc986e95e416db06f7e499ffbe5ea566a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa98f980_aad5ae44",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-04-19T07:25:46Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "357fadc986e95e416db06f7e499ffbe5ea566a44",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
