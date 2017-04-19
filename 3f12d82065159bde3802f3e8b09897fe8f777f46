@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa98f980_aaa68ebf",
+        "filename": "python-mistral-lib.spec",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-04-19T10:20:03Z",
+      "side": 1,
+      "message": "Missing python3 BuildRequires for unit tests.",
+      "revId": "3f12d82065159bde3802f3e8b09897fe8f777f46",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
