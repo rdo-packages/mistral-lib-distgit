@@ -168,3 +168,4 @@ rm -rf .testrepository
 %endif # with_python3
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/mistral-lib/commit/?id=d580062db3b38c40707a3ce7245483276aeefd63
