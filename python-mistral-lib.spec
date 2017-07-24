@@ -61,7 +61,7 @@ This package contains the Mistral custom actions library test files.
 Summary:    Mistral custom actions library documentation
 
 BuildRequires: python-sphinx
-BuildRequires: python-oslo-sphinx
+BuildRequires: python-openstackdocstheme
 
 %description -n python-%{library}-doc
 Mistral custom actions library documentation
@@ -126,7 +126,7 @@ rm -rf {test-,}requirements.txt
 %endif
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -168,3 +168,4 @@ rm -rf .testrepository
 %endif # with_python3
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/mistral-lib/commit/?id=d580062db3b38c40707a3ce7245483276aeefd63
