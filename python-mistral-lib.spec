@@ -88,6 +88,7 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-subunit
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-oslo-serialization >= 1.10.0
+BuildRequires:  openstack-macros
 
 Requires:       python3-babel >= 2.3.4
 Requires:       python3-oslo-serialization >= 1.10.0
@@ -121,7 +122,7 @@ This package contains the Mistral custom actions library test files.
 %autosetup -n %{library}-%{upstream_version} -S git
 
 # Let's handle dependencies ourseleves
-rm -rf {test-,}requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
