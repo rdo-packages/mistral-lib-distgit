@@ -10,6 +10,8 @@
 %global library mistral-lib
 %global module mistral_lib
 
+%global common_desc Python library for writing custom Mistral actions
+
 Name:       python-%{library}
 Version:    XXX
 Release:    XXX
@@ -41,7 +43,7 @@ Requires: python-oslo-serialization >= 1.10.0
 Requires: python-pbr >= 1.8
 
 %description -n python2-%{library}
-Python library for writing custom Mistral actions
+%{common_desc}
 
 
 %package -n python2-%{library}-tests
@@ -92,7 +94,7 @@ Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-pbr >= 1.8
 
 %description -n python3-%{library}
-Python library for writing custom Mistral actions
+%{common_desc}
 
 
 %package -n python3-%{library}-tests
@@ -104,7 +106,7 @@ Requires:       python3-subunit
 Requires:       python3-testrepository
 
 %description -n python3-%{library}-tests
-Python library for writing custom Mistral actions
+%{common_desc}
 
 This package contains the Mistral custom actions library test files.
 
@@ -112,7 +114,7 @@ This package contains the Mistral custom actions library test files.
 
 
 %description
-Python library for writing custom Mistral actions
+%{common_desc}
 
 
 %prep
