@@ -11,7 +11,7 @@
 %global module mistral_lib
 
 Name:       python-%{library}
-Version:    0.3.1
+Version:    0.3.3
 Release:    1%{?dist}
 Summary:    Python library for writing custom Mistral actions
 License:    ASL 2.0
@@ -170,6 +170,9 @@ rm -rf .testrepository
 %endif # with_python3
 
 %changelog
+* Mon Nov 20 2017 RDO <dev@lists.rdoproject.org> 0.3.3-1
+- Update to 0.3.3
+
 * Mon Oct 30 2017 rdo-trunk <javier.pena@redhat.com> 0.3.1-1
 - Update to 0.3.1
 
