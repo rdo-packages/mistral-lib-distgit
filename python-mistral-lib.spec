@@ -23,6 +23,9 @@ Source0:    http://tarballs.openstack.org/%{library}/%{library}-%{upstream_versi
 
 BuildArch:  noarch
 
+BuildRequires:  git
+BuildRequires:  openstack-macros
+
 %package -n python2-%{library}
 Summary:    Python library for writing custom Mistral actions
 %{?python_provide:%python_provide python2-%{library}}
@@ -30,7 +33,6 @@ Summary:    Python library for writing custom Mistral actions
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  python-setuptools
-BuildRequires:  git
 
 # test dependencies
 
@@ -88,7 +90,6 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-subunit
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-oslo-serialization >= 1.10.0
-BuildRequires:  openstack-macros
 
 Requires:       python3-babel >= 2.3.4
 Requires:       python3-oslo-serialization >= 1.10.0
