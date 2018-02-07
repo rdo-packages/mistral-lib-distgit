@@ -31,18 +31,18 @@ Summary:    Python library for writing custom Mistral actions
 %{?python_provide:%python_provide python2-%{library}}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
-BuildRequires:  python-setuptools
+BuildRequires:  python2-pbr
+BuildRequires:  python2-setuptools
 
 # test dependencies
 
-BuildRequires:  python-oslotest
-BuildRequires:  python-subunit
-BuildRequires:  python-testrepository
-BuildRequires:  python-oslo-serialization >= 1.10.0
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-subunit
+BuildRequires:  python2-oslo-serialization >= 2.18.0
+BuildRequires:  python2-testrepository
 
-Requires: python-oslo-serialization >= 1.10.0
-Requires: python-pbr >= 1.8
+Requires: python2-oslo-serialization >= 2.18.0
+Requires: python2-pbr >= 2.0.0
 
 %description -n python2-%{library}
 %{common_desc}
@@ -52,9 +52,9 @@ Requires: python-pbr >= 1.8
 Summary:    Mistral custom actions library tests
 Requires:   python2-%{library} = %{version}-%{release}
 
-Requires:       python-oslotest
-Requires:       python-subunit
-Requires:       python-testrepository
+Requires:       python2-oslotest
+Requires:       python2-subunit
+Requires:       python2-testrepository
 
 %description -n python2-%{library}-tests
 Mistral custom actions library tests.
@@ -66,8 +66,8 @@ Summary:    Mistral custom actions library documentation
 
 BuildRequires: python-sphinx
 # FIXME: remove following line when a new release including https://review.openstack.org/#/c/485542/ is in u-c
-BuildRequires: python-oslo-sphinx
-BuildRequires: python-openstackdocstheme
+BuildRequires: python2-oslo-sphinx
+BuildRequires: python2-openstackdocstheme
 
 %description -n python-%{library}-doc
 Mistral custom actions library documentation
@@ -89,11 +89,11 @@ BuildRequires:  git
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-subunit
 BuildRequires:  python3-testrepository
-BuildRequires:  python3-oslo-serialization >= 1.10.0
+BuildRequires:  python3-oslo-serialization >= 2.18.0
 
 Requires:       python3-babel >= 2.3.4
-Requires:       python3-oslo-serialization >= 1.10.0
-Requires:       python3-pbr >= 1.8
+Requires:       python3-oslo-serialization >= 2.18.0
+Requires:       python3-pbr >= 2.0.0
 
 %description -n python3-%{library}
 %{common_desc}
