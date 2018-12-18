@@ -1,11 +1,15 @@
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
-
-# Python3 support in OpenStack starts with version 3.5,
-# which is only in Fedora 24+
-%if 0%{?fedora} >= 24
-%global with_python3 1
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
 %endif
-
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global library mistral-lib
 %global module mistral_lib
@@ -26,37 +30,38 @@ BuildArch:  noarch
 BuildRequires:  git
 BuildRequires:  openstack-macros
 
-%package -n python2-%{library}
+%package -n python%{pyver}-%{library}
 Summary:    Python library for writing custom Mistral actions
-%{?python_provide:%python_provide python2-%{library}}
+%{?python_provide:%python_provide python%{pyver}-%{library}}
 
-BuildRequires:  python2-devel
-BuildRequires:  python2-pbr
-BuildRequires:  python2-setuptools
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python%{pyver}-setuptools
 
 # test dependencies
 
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-subunit
-BuildRequires:  python2-oslo-serialization >= 2.18.0
-BuildRequires:  python2-testrepository
+BuildRequires:  python%{pyver}-oslotest
+BuildRequires:  python%{pyver}-subunit
+BuildRequires:  python%{pyver}-oslo-serialization >= 2.18.0
+BuildRequires:  python%{pyver}-testrepository
 
-Requires: python2-oslo-serialization >= 2.18.0
-Requires: python2-pbr >= 2.0.0
+Requires: python%{pyver}-oslo-serialization >= 2.18.0
+Requires: python%{pyver}-pbr >= 2.0.0
 
-%description -n python2-%{library}
+%description -n python%{pyver}-%{library}
 %{common_desc}
 
 
-%package -n python2-%{library}-tests
+%package -n python%{pyver}-%{library}-tests
 Summary:    Mistral custom actions library tests
-Requires:   python2-%{library} = %{version}-%{release}
+%{?python_provide:%python_provide python%{pyver}-%{library}-tests}
+Requires:   python%{pyver}-%{library} = %{version}-%{release}
 
-Requires:       python2-oslotest
-Requires:       python2-subunit
-Requires:       python2-testrepository
+Requires:       python%{pyver}-oslotest
+Requires:       python%{pyver}-subunit
+Requires:       python%{pyver}-testrepository
 
-%description -n python2-%{library}-tests
+%description -n python%{pyver}-%{library}-tests
 Mistral custom actions library tests.
 
 This package contains the Mistral custom actions library test files.
@@ -64,56 +69,15 @@ This package contains the Mistral custom actions library test files.
 %package -n python-%{library}-doc
 Summary:    Mistral custom actions library documentation
 
-BuildRequires: python-sphinx
+BuildRequires: python%{pyver}-sphinx
 # FIXME: remove following line when a new release including https://review.openstack.org/#/c/485542/ is in u-c
-BuildRequires: python2-oslo-sphinx
-BuildRequires: python2-openstackdocstheme
+BuildRequires: python%{pyver}-oslo-sphinx
+BuildRequires: python%{pyver}-openstackdocstheme
 
 %description -n python-%{library}-doc
 Mistral custom actions library documentation
 
 This package contains the documentation.
-
-%if 0%{?with_python3}
-%package -n python3-%{library}
-Summary:    Python library for writing custom Mistral actions
-%{?python_provide:%python_provide python3-%{library}}
-
-BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
-BuildRequires:  git
-
-# test dependencies
-
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-subunit
-BuildRequires:  python3-testrepository
-BuildRequires:  python3-oslo-serialization >= 2.18.0
-
-Requires:       python3-babel >= 2.3.4
-Requires:       python3-oslo-serialization >= 2.18.0
-Requires:       python3-pbr >= 2.0.0
-
-%description -n python3-%{library}
-%{common_desc}
-
-
-%package -n python3-%{library}-tests
-Summary:    Python library for writing custom Mistral actions
-Requires:   python3-%{library} = %{version}-%{release}
-
-Requires:       python3-oslotest
-Requires:       python3-subunit
-Requires:       python3-testrepository
-
-%description -n python3-%{library}-tests
-%{common_desc}
-
-This package contains the Mistral custom actions library test files.
-
-%endif # with_python3
-
 
 %description
 %{common_desc}
@@ -126,51 +90,30 @@ This package contains the Mistral custom actions library test files.
 %py_req_cleanup
 
 %build
-%py2_build
-%if 0%{?with_python3}
-%py3_build
-%endif
+%{pyver_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx -b html
-# remove the sphinx-build leftovers
+%{pyver_bin} setup.py build_sphinx -b html
+# remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%py2_install
-%if 0%{?with_python3}
-%py3_install
-%endif
+%{pyver_install}
 
 %check
-%if 0%{?with_python3}
-%{__python3} setup.py test
-rm -rf .testrepository
-%endif
-%{__python2} setup.py test
+%{pyver_bin} setup.py test
 
-%files -n python2-%{library}
+%files -n python%{pyver}-%{library}
 %license LICENSE
-%{python2_sitelib}/%{module}
-%{python2_sitelib}/%{module}-*.egg-info
-%exclude %{python2_sitelib}/%{module}/tests
+%{pyver_sitelib}/%{module}
+%{pyver_sitelib}/%{module}-*.egg-info
+%exclude %{pyver_sitelib}/%{module}/tests
 
-%files -n python2-%{library}-tests
-%{python2_sitelib}/%{module}/tests
+%files -n python%{pyver}-%{library}-tests
+%{pyver_sitelib}/%{module}/tests
 
 %files -n python-%{library}-doc
 %license LICENSE
 %doc doc/build/html README.rst
-
-%if 0%{?with_python3}
-%files -n python3-%{library}
-%license LICENSE
-%{python3_sitelib}/%{module}
-%{python3_sitelib}/%{module}-*.egg-info
-%exclude %{python3_sitelib}/%{module}/tests
-
-%files -n python3-%{library}-tests
-%{python3_sitelib}/%{module}/tests
-%endif # with_python3
 
 %changelog
