@@ -10,6 +10,7 @@
 %global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%global with_doc 1
 
 %global library mistral-lib
 %global module mistral_lib
@@ -66,6 +67,7 @@ Mistral custom actions library tests.
 
 This package contains the Mistral custom actions library test files.
 
+%if 0%{?with_doc}
 %package -n python-%{library}-doc
 Summary:    Mistral custom actions library documentation
 
@@ -78,6 +80,7 @@ BuildRequires: python%{pyver}-openstackdocstheme
 Mistral custom actions library documentation
 
 This package contains the documentation.
+%endif
 
 %description
 %{common_desc}
@@ -92,10 +95,12 @@ This package contains the documentation.
 %build
 %{pyver_build}
 
+%if 0%{?with_doc}
 # generate html docs
 %{pyver_bin} setup.py build_sphinx -b html
 # remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %install
 %{pyver_install}
@@ -112,8 +117,10 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files -n python%{pyver}-%{library}-tests
 %{pyver_sitelib}/%{module}/tests
 
+%if 0%{?with_doc}
 %files -n python-%{library}-doc
 %license LICENSE
 %doc doc/build/html README.rst
+%endif
 
 %changelog
