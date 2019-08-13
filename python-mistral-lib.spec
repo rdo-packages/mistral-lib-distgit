@@ -41,11 +41,16 @@ BuildRequires:  python%{pyver}-setuptools
 
 # test dependencies
 
+BuildRequires:  python%{pyver}-eventlet >= 0.20.0
 BuildRequires:  python%{pyver}-oslotest
 BuildRequires:  python%{pyver}-subunit
+BuildRequires:  python%{pyver}-oslo-log >= 3.36.0
 BuildRequires:  python%{pyver}-oslo-serialization >= 2.18.0
 BuildRequires:  python%{pyver}-testrepository
+BuildRequires:  python%{pyver}-testtools >= 2.2.0
 
+Requires: python%{pyver}-eventlet >= 0.20.0
+Requires: python%{pyver}-oslo-log >= 3.36.0
 Requires: python%{pyver}-oslo-serialization >= 2.18.0
 Requires: python%{pyver}-pbr >= 2.0.0
 
