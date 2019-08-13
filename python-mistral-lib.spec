@@ -124,3 +124,4 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/mistral-lib/commit/?id=070080bd1bc4c4742f6a98370b7ce1616084eded
