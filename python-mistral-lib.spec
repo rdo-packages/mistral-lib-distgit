@@ -77,8 +77,6 @@ This package contains the Mistral custom actions library test files.
 Summary:    Mistral custom actions library documentation
 
 BuildRequires: python%{pyver}-sphinx
-# FIXME: remove following line when a new release including https://review.openstack.org/#/c/485542/ is in u-c
-BuildRequires: python%{pyver}-oslo-sphinx
 BuildRequires: python%{pyver}-openstackdocstheme
 
 %description -n python-%{library}-doc
