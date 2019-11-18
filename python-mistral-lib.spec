@@ -18,7 +18,7 @@
 %global common_desc Python library for writing custom Mistral actions
 
 Name:       python-%{library}
-Version:    1.1.0
+Version:    1.1.1
 Release:    1%{?dist}
 Summary:    Python library for writing custom Mistral actions
 License:    ASL 2.0
@@ -124,6 +124,9 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+* Mon Nov 18 2019 RDO <dev@lists.rdoproject.org> 1.1.1-1
+- Update to 1.1.1
+
 * Tue Mar 12 2019 RDO <dev@lists.rdoproject.org> 1.1.0-1
 - Update to 1.1.0
 
