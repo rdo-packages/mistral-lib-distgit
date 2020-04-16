@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global with_doc 1
 
@@ -31,45 +20,45 @@ BuildArch:  noarch
 BuildRequires:  git
 BuildRequires:  openstack-macros
 
-%package -n python%{pyver}-%{library}
+%package -n python3-%{library}
 Summary:    Python library for writing custom Mistral actions
-%{?python_provide:%python_provide python%{pyver}-%{library}}
+%{?python_provide:%python_provide python3-%{library}}
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-pbr
-BuildRequires:  python%{pyver}-setuptools
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr
+BuildRequires:  python3-setuptools
 
 # test dependencies
 
-BuildRequires:  python%{pyver}-eventlet >= 0.20.0
-BuildRequires:  python%{pyver}-oslotest
-BuildRequires:  python%{pyver}-subunit
-BuildRequires:  python%{pyver}-oslo-log >= 3.36.0
-BuildRequires:  python%{pyver}-oslo-serialization >= 2.21.1
-BuildRequires:  python%{pyver}-testrepository
-BuildRequires:  python%{pyver}-testtools >= 2.2.0
-BuildRequires:  python%{pyver}-yaql >= 1.1.3
+BuildRequires:  python3-eventlet >= 0.20.0
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-subunit
+BuildRequires:  python3-oslo-log >= 3.36.0
+BuildRequires:  python3-oslo-serialization >= 2.21.1
+BuildRequires:  python3-testrepository
+BuildRequires:  python3-testtools >= 2.2.0
+BuildRequires:  python3-yaql >= 1.1.3
 
-Requires: python%{pyver}-eventlet >= 0.20.0
-Requires: python%{pyver}-oslo-log >= 3.36.0
-Requires: python%{pyver}-oslo-serialization >= 2.21.1
-Requires: python%{pyver}-pbr >= 2.0.0
-Requires: python%{pyver}-yaql >= 1.1.3
+Requires: python3-eventlet >= 0.20.0
+Requires: python3-oslo-log >= 3.36.0
+Requires: python3-oslo-serialization >= 2.21.1
+Requires: python3-pbr >= 2.0.0
+Requires: python3-yaql >= 1.1.3
 
-%description -n python%{pyver}-%{library}
+%description -n python3-%{library}
 %{common_desc}
 
 
-%package -n python%{pyver}-%{library}-tests
+%package -n python3-%{library}-tests
 Summary:    Mistral custom actions library tests
-%{?python_provide:%python_provide python%{pyver}-%{library}-tests}
-Requires:   python%{pyver}-%{library} = %{version}-%{release}
+%{?python_provide:%python_provide python3-%{library}-tests}
+Requires:   python3-%{library} = %{version}-%{release}
 
-Requires:       python%{pyver}-oslotest
-Requires:       python%{pyver}-subunit
-Requires:       python%{pyver}-testrepository
+Requires:       python3-oslotest
+Requires:       python3-subunit
+Requires:       python3-testrepository
 
-%description -n python%{pyver}-%{library}-tests
+%description -n python3-%{library}-tests
 Mistral custom actions library tests.
 
 This package contains the Mistral custom actions library test files.
@@ -78,8 +67,8 @@ This package contains the Mistral custom actions library test files.
 %package -n python-%{library}-doc
 Summary:    Mistral custom actions library documentation
 
-BuildRequires: python%{pyver}-sphinx
-BuildRequires: python%{pyver}-openstackdocstheme
+BuildRequires: python3-sphinx
+BuildRequires: python3-openstackdocstheme
 
 %description -n python-%{library}-doc
 Mistral custom actions library documentation
@@ -98,29 +87,29 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %if 0%{?with_doc}
 # generate html docs
-sphinx-build-%{pyver} -b html doc/source doc/build/html
-# remove the sphinx-build-%{pyver} leftovers
+sphinx-build-3 -b html doc/source doc/build/html
+# remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %install
-%{pyver_install}
+%{py3_install}
 
 %check
-%{pyver_bin} setup.py test
+%{__python3} setup.py test
 
-%files -n python%{pyver}-%{library}
+%files -n python3-%{library}
 %license LICENSE
-%{pyver_sitelib}/%{module}
-%{pyver_sitelib}/%{module}-*.egg-info
-%exclude %{pyver_sitelib}/%{module}/tests
+%{python3_sitelib}/%{module}
+%{python3_sitelib}/%{module}-*.egg-info
+%exclude %{python3_sitelib}/%{module}/tests
 
-%files -n python%{pyver}-%{library}-tests
-%{pyver_sitelib}/%{module}/tests
+%files -n python3-%{library}-tests
+%{python3_sitelib}/%{module}/tests
 
 %if 0%{?with_doc}
 %files -n python-%{library}-doc
