@@ -29,7 +29,7 @@ BuildArch:  noarch
 BuildRequires:  /usr/bin/gpgv2
 %endif
 
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  openstack-macros
 
 %package -n python3-%{library}
